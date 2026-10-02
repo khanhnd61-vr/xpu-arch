@@ -423,24 +423,10 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; font-weigh
 .src__label { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; color: var(--support); }
 .src a { text-decoration: underline; text-decoration-color: var(--secondary); text-underline-offset: 3px; }
 .src a:hover { color: var(--support); }
-.src__actions { margin-left: auto; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
-.src .hub { font-family: var(--font-display); font-weight: 600; font-size: .84rem; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--secondary); }
-.src .issue-btn {
-  font-family: var(--font-display); font-weight: 600; font-size: .8rem; color: var(--primary); text-decoration: none;
-  border: 1.5px solid var(--secondary); border-radius: 999px; padding: 3px 12px;
-  transition: background .18s ease, color .18s ease;
-}
-.src .issue-btn:hover { background: var(--secondary); color: var(--primary); }
+.src .hub { margin-left: auto; font-family: var(--font-display); font-weight: 600; font-size: .84rem; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--secondary); }
 
 /* Contribute: report a wrong diagram, request a new processor */
-.contrib {
-  margin-top: 30px; display: flex; align-items: center; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap;
-  background: var(--paper); border: 1.5px dashed var(--secondary); border-radius: var(--radius); padding: 22px 26px;
-}
-.contrib__text { max-width: 64ch; }
-.contrib h3 { margin: 0 0 6px; font-size: 1.15rem; color: var(--primary); }
-.contrib p { margin: 0; font-size: .9rem; color: var(--ink-soft); }
-.contrib__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.contrib { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 28px 0; background: var(--cream); }
@@ -463,7 +449,10 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; font-weigh
   .hero { grid-template-columns: 1fr; padding: 48px 0 24px; gap: 28px; }
   .method { grid-template-columns: 1fr; }
   .regs-grid { grid-template-columns: 1fr; }
+}
 
+/* The nav collapses earlier than the layout, as on the main site: its links need about 1000px */
+@media (max-width: 1000px) {
   .nav__toggle { display: flex; }
   .nav__links {
     position: absolute; top: 68px; left: 0; right: 0;
@@ -472,7 +461,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; font-weigh
     padding: 0 6%; max-height: 0; overflow: hidden;
     transition: max-height .3s ease, padding .3s ease;
   }
-  .nav__links.is-open { max-height: 340px; padding: 16px 6% 22px; }
+  .nav__links.is-open { max-height: 420px; padding: 16px 6% 22px; }
   .nav__links li { width: 100%; padding: 8px 0; }
 }
 
@@ -487,8 +476,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; font-weigh
   .picker { flex-direction: column; align-items: stretch; gap: 8px; top: 68px; }
   .picker__filter { align-self: flex-start; }
   .dev { scroll-margin-top: 175px; }
-  .src__actions { margin-left: 0; }
-  .contrib { padding: 18px 16px; }
+  .src .hub { margin-left: 0; }
   .L-row--q { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 

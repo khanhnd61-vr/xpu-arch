@@ -31,21 +31,20 @@
   // GitHub issues: a prefilled report for a wrong diagram, a request for a new processor
   // ---------------------------------------------------------------------------
   const issueUrl = (title, body) => `${ISSUES}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-  const reportUrl = (d) => issueUrl(
-    d ? `Incorrect: ${d.name}` : 'Incorrect: ',
-    [
-      `Device: ${d ? `${d.name}${d.alt ? ` (${d.alt})` : ''}` : ''}`,
-      `Page: ${PAGE}${d ? `#${d.id}` : ''}`,
-      '',
-      '### What is wrong',
-      '<!-- e.g. the L2 size in the chip diagram, a core count, a cluster layout, a measured tag -->',
-      '',
-      '### What it should be',
-      '',
-      '### Source',
-      '<!-- a datasheet, whitepaper, die analysis or measurement that shows it -->',
-    ].join('\n'),
-  );
+  const reportUrl = () => issueUrl('Incorrect: ', [
+    '### Device',
+    '<!-- e.g. RTX 3090, Apple M4, Raspberry Pi 5 -->',
+    '',
+    '### What is wrong',
+    '<!-- e.g. the L2 size in the chip diagram, a core count, a cluster layout, a measured tag -->',
+    '',
+    '### What it should be',
+    '',
+    '### Source',
+    '<!-- a datasheet, whitepaper, die analysis or measurement that shows it -->',
+    '',
+    `Page: ${PAGE}`,
+  ].join('\n'));
   const requestUrl = () => issueUrl('Request: ', [
     '### Processor',
     '<!-- name and model number -->',
@@ -307,10 +306,7 @@
     const src = h('p', { class: 'src' });
     src.innerHTML = '<span class="src__label">Sources</span>'
       + d.src.map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`).join('')
-      + '<span class="src__actions">'
-      + `<a class="issue-btn" href="${esc(reportUrl(d))}" target="_blank" rel="noopener" title="Open a GitHub issue about ${esc(d.short)}">Report an error ↗</a>`
-      + `<a class="hub" href="${HUB}?q=${encodeURIComponent(d.hubq || d.short)}">Its measurements on VLA Hub ↗</a>`
-      + '</span>';
+      + `<a class="hub" href="${HUB}?q=${encodeURIComponent(d.hubq || d.short)}">Its measurements on VLA Hub ↗</a>`;
     sec.appendChild(src);
     return sec;
   }

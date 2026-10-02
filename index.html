@@ -42,6 +42,7 @@
         <li><a href="#devices">Devices</a></li>
         <li><a href="#compare">Compare</a></li>
         <li><a href="#notes">Notes</a></li>
+        <li><a href="#contribute">Contribute</a></li>
         <li><a class="nav__cta" href="https://havi.fit/">Havilab ↗</a></li>
       </ul>
     </nav>
@@ -169,20 +170,6 @@
           <div class="picker__groups" data-side></div>
         </nav>
         <div class="devices" data-devices></div>
-        <aside class="contrib reveal" aria-labelledby="contrib-title">
-          <div class="contrib__text">
-            <h3 id="contrib-title">Spotted a mistake, or missing a processor?</h3>
-            <p>
-              Vendors publish only part of each chip, so some of these diagrams rest on die analyses and
-              measurements. Open an issue on GitHub to correct a diagram, with a source if you have one, or to ask
-              for a processor to be drawn.
-            </p>
-          </div>
-          <div class="contrib__actions">
-            <a class="btn btn--primary" data-issue="request" href="https://github.com/khanhnd61-vr/xpu-arch/issues/new" target="_blank" rel="noopener">Request a processor ↗</a>
-            <a class="btn btn--ghost" data-issue="report" href="https://github.com/khanhnd61-vr/xpu-arch/issues/new" target="_blank" rel="noopener">Report an error ↗</a>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -234,6 +221,25 @@
             <p>A ringed frame is a processor that has rows on <a href="/vla-hub/">VLA Hub</a>: <span style="color: var(--cpp); font-weight: 600">vla.cpp</span> through ggml backends (CUDA, Metal, SYCL, OpenVINO, Hexagon, CPU) or <span style="color: var(--simd); font-weight: 600">vla.simd</span> through its own AVX2 and NEON kernels.</p>
             <p>The register tiles come from the vla.simd paper, which chooses them per instruction set.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contribute ===== -->
+    <section class="section" id="contribute">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__kicker">// contribute</span>
+          <h2>Spotted a mistake, or missing a processor?</h2>
+          <p class="section__sub">
+            Vendors publish only part of each chip, so some of these diagrams rest on die analyses and measurements.
+            Open an issue on GitHub to correct a diagram, with a source if you have one, or to ask for a processor
+            to be drawn.
+          </p>
+        </header>
+        <div class="contrib">
+          <a class="btn btn--primary" data-issue="report" href="https://github.com/khanhnd61-vr/xpu-arch/issues/new" target="_blank" rel="noopener">Report an error ↗</a>
+          <a class="btn btn--ghost" data-issue="request" href="https://github.com/khanhnd61-vr/xpu-arch/issues/new" target="_blank" rel="noopener">Request a processor ↗</a>
         </div>
       </div>
     </section>

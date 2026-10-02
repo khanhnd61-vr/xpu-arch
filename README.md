@@ -14,7 +14,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 | Path | What it holds |
 |---|---|
-| `index.html` | Page shell: hero, hierarchy ladders, register files, devices, compare table, notes |
+| `index.html` | Page shell: hero, hierarchy ladders, register files, devices, compare table, notes, contribute |
 | `assets/site.css` | Main-site palette and fonts, plus the diagram styles |
 | `assets/ladder.js` | The two zoom ladders (Raspberry Pi 5 and RTX 3090), drawn as inline SVG |
 | `assets/xpu.js` | Renders every device diagram from data as HTML, and runs the page (picker, filter, scrollspy) |
@@ -49,6 +49,6 @@ A new device in VLA Hub needs an entry in the matching `data/*.js` file, with `m
 copied from the processors and backends in VLA Hub's `data/bench.js`, and `hubq` set to
 the device's short name there. Every card links its sources; cite one for any new number.
 
-Readers report a wrong diagram or ask for a new processor through the buttons on the page:
+Readers report a wrong diagram or ask for a new processor through the two buttons in the Contribute section:
 each opens a prefilled issue at [khanhnd61-vr/xpu-arch/issues](https://github.com/khanhnd61-vr/xpu-arch/issues).
 The templates live in `reportUrl` and `requestUrl` in `assets/xpu.js`.
