@@ -48,3 +48,7 @@ A device's `chip` and each `zoom` node are trees of a small layout grammar:
 A new device in VLA Hub needs an entry in the matching `data/*.js` file, with `measured`
 copied from the processors and backends in VLA Hub's `data/bench.js`, and `hubq` set to
 the device's short name there. Every card links its sources; cite one for any new number.
+
+Readers report a wrong diagram or ask for a new processor through the buttons on the page:
+each opens a prefilled issue at [khanhnd61-vr/xpu-arch/issues](https://github.com/khanhnd61-vr/xpu-arch/issues).
+The templates live in `reportUrl` and `requestUrl` in `assets/xpu.js`.

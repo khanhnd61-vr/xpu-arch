@@ -8,6 +8,9 @@
 
   const ENGINES = { cpp: 'vla.cpp', simd: 'vla.simd' };
   const HUB = '/vla-hub/';
+  const ISSUES = 'https://github.com/khanhnd61-vr/xpu-arch/issues/new';
+  // Links in an issue should point at the published page, also when the page is opened from disk
+  const PAGE = location.protocol.startsWith('http') ? `${location.origin}${location.pathname}` : 'https://havi.fit/xpu-arch/';
   const GROUPS = [
     { id: 'gpu', name: 'Discrete GPUs', short: 'GPUs' },
     { id: 'soc', name: 'Systems on chip', short: 'SoCs' },
@@ -23,6 +26,43 @@
   const cls = (...xs) => xs.filter(Boolean).join(' ');
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const mtag = ([e, label]) => `<span class="mtag mtag--${e}"><i>${ENGINES[e]}</i>${esc(label)}</span>`;
+
+  // ---------------------------------------------------------------------------
+  // GitHub issues: a prefilled report for a wrong diagram, a request for a new processor
+  // ---------------------------------------------------------------------------
+  const issueUrl = (title, body) => `${ISSUES}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  const reportUrl = (d) => issueUrl(
+    d ? `Incorrect: ${d.name}` : 'Incorrect: ',
+    [
+      `Device: ${d ? `${d.name}${d.alt ? ` (${d.alt})` : ''}` : ''}`,
+      `Page: ${PAGE}${d ? `#${d.id}` : ''}`,
+      '',
+      '### What is wrong',
+      '<!-- e.g. the L2 size in the chip diagram, a core count, a cluster layout, a measured tag -->',
+      '',
+      '### What it should be',
+      '',
+      '### Source',
+      '<!-- a datasheet, whitepaper, die analysis or measurement that shows it -->',
+    ].join('\n'),
+  );
+  const requestUrl = () => issueUrl('Request: ', [
+    '### Processor',
+    '<!-- name and model number -->',
+    '',
+    '### Kind',
+    '<!-- CPU, GPU, NPU or system on chip -->',
+    '',
+    '### Why it would help',
+    '<!-- e.g. you run a VLA policy on it, or it has results on VLA Hub -->',
+    '',
+    '### Sources',
+    '<!-- a datasheet, whitepaper or die analysis, if you know one -->',
+    '',
+    `Page: ${PAGE}`,
+  ].join('\n'));
+  document.querySelectorAll('[data-issue="report"]').forEach((a) => { a.href = reportUrl(); });
+  document.querySelectorAll('[data-issue="request"]').forEach((a) => { a.href = requestUrl(); });
 
   // ---------------------------------------------------------------------------
   // Block diagram grammar
@@ -265,9 +305,12 @@
     sec.appendChild(figs);
 
     const src = h('p', { class: 'src' });
-    src.innerHTML = '<span>Sources</span>'
+    src.innerHTML = '<span class="src__label">Sources</span>'
       + d.src.map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`).join('')
-      + `<a class="hub" href="${HUB}?q=${encodeURIComponent(d.hubq || d.short)}">Its measurements on VLA Hub ↗</a>`;
+      + '<span class="src__actions">'
+      + `<a class="issue-btn" href="${esc(reportUrl(d))}" target="_blank" rel="noopener" title="Open a GitHub issue about ${esc(d.short)}">Report an error ↗</a>`
+      + `<a class="hub" href="${HUB}?q=${encodeURIComponent(d.hubq || d.short)}">Its measurements on VLA Hub ↗</a>`
+      + '</span>';
     sec.appendChild(src);
     return sec;
   }
