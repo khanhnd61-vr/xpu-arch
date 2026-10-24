@@ -10,7 +10,7 @@
   const HUB = '/vla-hub/';
   const ISSUES = 'https://github.com/khanhnd61-vr/xpu-arch/issues/new';
   // Links in an issue should point at the published page, also when the page is opened from disk
-  const PAGE = location.protocol.startsWith('http') ? `${location.origin}${location.pathname}` : 'https://havi.fit/xpu-arch/';
+  const PAGE = location.protocol.startsWith('http') ? `${location.origin}${location.pathname}` : 'https://khanhnd61-vr.github.io/xpu-arch/';
   const GROUPS = [
     { id: 'gpu', name: 'Discrete GPUs', short: 'GPUs' },
     { id: 'soc', name: 'Systems on chip', short: 'SoCs' },

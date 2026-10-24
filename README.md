@@ -1,9 +1,9 @@
 # XPU Arch
 
 Block diagrams of the CPUs, GPUs, NPUs and systems on chip behind
-[VLA Hub](https://havi.fit/vla-hub/), from the package down to one lane: core clusters
+[VLA Hub](https://khanhnd61-vr.github.io/vla-hub/), from the package down to one lane: core clusters
 and the caches they share, GPU clusters and their SMs, register files, and the memory
-under all of them. It uses the theme of the main site ([havi.fit](https://havi.fit/)).
+under all of them. It uses the theme of the main site ([khanhnd61-vr.github.io](https://khanhnd61-vr.github.io/)).
 There is no build step: open `index.html`, or serve the folder with any static server.
 
 ```bash
